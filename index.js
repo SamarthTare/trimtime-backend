@@ -3,12 +3,14 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const barberRoutes = require('./routes/barbers');
 const bookingRoutes = require('./routes/bookings');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
+app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.send('💈 TrimTime Server is LIVE!');

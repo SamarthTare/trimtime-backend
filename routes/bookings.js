@@ -36,5 +36,19 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+// ... Upar POST wala code hoga, uske niche ye paste karo ...
 
+// 2. GET All Bookings (Dashboard ke liye)
+router.get('/', async (req, res) => {
+  try {
+    // Saari bookings laao aur nayi wali sabse upar rakho
+    const bookings = await Appointment.find().sort({ _id: -1 });
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// ... module.exports = router; (Ye last line honi chahiye)
 module.exports = router;
+
